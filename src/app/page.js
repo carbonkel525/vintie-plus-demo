@@ -1,112 +1,306 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import TextWithBackground from "@/components/TextWithBackground";
 import Image from "next/image";
+import BotThinking from "@/components/BotThinking";
+import FetchingStatus from "@/components/FetchingStatus";
 
 export default function Home() {
+  const [showBotThinking, setShowBotThinking] = useState(false);
+  const [currentStatusIndex, setCurrentStatusIndex] = useState(0);
+
+  const statusSteps = [
+    { emoji: "🔍", status: "Fetching required information..." },
+    { emoji: "🚛", status: "Fetching shipping options..." },
+    { emoji: "💸", status: "Finalizing transaction..." },
+    { emoji: "💶", status: "Confirming payment..." },
+  ];
+
+  const handleAutobuyClick = () => {
+    setShowBotThinking(true);
+    setTimeout(() => {
+      setShowBotThinking(false);
+      setCurrentStatusIndex(1); // Start bij de eerste status na BotThinking
+    }, 1500); // 3 seconden voor BotThinking
+  };
+
+  useEffect(() => {
+    if (currentStatusIndex > 0 && currentStatusIndex < statusSteps.length) {
+      const timer = setTimeout(() => {
+        setCurrentStatusIndex((prevIndex) => prevIndex + 1);
+      }, 1000); // 1500 ms voor elke status
+      return () => clearTimeout(timer);
+    }
+  }, [currentStatusIndex]);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className="flex flex-row items-start justify-center">
+      <div className="w-[650px] h-screen border-4 bg-[#555961] mx-auto flex justify-center flex-col">
+        <div className="mx-auto">
+          <div className="w-[500px] h-[580px] bg-[#4b4f56] rounded-md border-l-4 border-[#3ae6b6] mt-3">
+            <div className="flex flex-row p-5">
+              <h1 className="text-url-blue">T-shirt Ralph Lauren</h1>
+            </div>
+            <div>
+              <div className="flex">
+                <div>
+                  <div className="flex">
+                    <TextWithBackground
+                      bgColor="#37393e"
+                      text="📍"
+                      width="25px"
+                    />
+                    <h2 className="font-bold text-white">Location </h2>
+                  </div>
+                  <div className="mt-2 text-white">
+                    <TextWithBackground
+                      bgColor="#37393e"
+                      text="Italien (IT)"
+                      width="80px"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div className="flex ml-12">
+                    <TextWithBackground
+                      bgColor="#37393e"
+                      text="👕"
+                      width="25px"
+                    />
+                    <h2 className="font-bold text-white">Brand </h2>
+                  </div>
+                  <div className="mt-2 ml-12 text-white">
+                    <TextWithBackground
+                      bgColor="#37393e"
+                      text="Ralph Lauren"
+                      width="98px"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div className="flex">
+                    <TextWithBackground
+                      bgColor="#37393e"
+                      text="📏"
+                      width="25px"
+                    />
+                    <h2 className="font-bold text-white">Size </h2>
+                  </div>
+                  <div className="mt-2 text-white">
+                    <TextWithBackground
+                      bgColor="#37393e"
+                      text="s"
+                      width="20px"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="flex">
+                <div>
+                  <div className="flex mt-5">
+                    <TextWithBackground
+                      bgColor="#37393e"
+                      text="🕐"
+                      width="25px"
+                    />
+                    <h2 className="font-bold text-white">Posted </h2>
+                  </div>
+                  <div className="mt-2 text-white">
+                    <TextWithBackground
+                      bgColor="#37393e"
+                      text="9 seconden geleden"
+                      width="148px"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div className="flex mt-5 ml-[-8px]">
+                    <TextWithBackground
+                      bgColor="#37393e"
+                      text="🕐"
+                      width="25px"
+                    />
+                    <h2 className="font-bold text-white">Rating </h2>
+                  </div>
+                  <div className="mt-2 text-white ml-[-8px]">
+                    <TextWithBackground
+                      bgColor="#37393e"
+                      text="⭐⭐⭐⭐⭐"
+                      width="95px"
+                    />
+                  </div>
+                </div>
+                <div className="ml-1">
+                  <div className="flex mt-5">
+                    <TextWithBackground
+                      bgColor="#37393e"
+                      text="📦"
+                      width="25px"
+                    />
+                    <h2 className="font-bold text-white">Condition </h2>
+                  </div>
+                  <div className="mt-2 text-white">
+                    <TextWithBackground
+                      bgColor="#37393e"
+                      text="Very good condition"
+                      width="150px"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="flex">
+                <div>
+                  <div className="flex mt-5">
+                    <TextWithBackground
+                      bgColor="#37393e"
+                      text="💶"
+                      width="25px"
+                    />
+                    <h2 className="font-bold text-white">Price </h2>
+                  </div>
+                  <div className="mt-2 text-white">
+                    <TextWithBackground
+                      bgColor="#37393e"
+                      text="10|11.2 EUR"
+                      width="90px"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="ml-5 mt-3">
+                <div className="flex">
+                  <Image
+                    alt="picture 1"
+                    src="/picture1.jpeg"
+                    className="rounded-md mr-2"
+                    width={200}
+                    height={300}
+                  />
+                  <div className="flex flex-col">
+                    <div className="overflow-hidden mb-2">
+                      <Image
+                        alt="picture 1"
+                        src="/picture2.jpg"
+                        className="rounded-md"
+                        height={150}
+                        width={200}
+                      />
+                    </div>
+                    <div className="overflow-hidden">
+                      <Image
+                        alt="picture 1"
+                        src="/picture3.jpg"
+                        className="rounded-md"
+                        height={150}
+                        width={200}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center">
+            <button className="w-24 h-8 mt-2 text-sm rounded bg-[#838793] opacity-80 text-white text-center flex items-center justify-center">
+              🔎Link
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                color="currentColor"
+                fill="none"
+                className="w-4 h-4 ml-1"
+              >
+                <path
+                  d="M11.1004 3.00208C7.4515 3.00864 5.54073 3.09822 4.31962 4.31931C3.00183 5.63706 3.00183 7.75796 3.00183 11.9997C3.00183 16.2415 3.00183 18.3624 4.31962 19.6801C5.6374 20.9979 7.75836 20.9979 12.0003 20.9979C16.2421 20.9979 18.3631 20.9979 19.6809 19.6801C20.902 18.4591 20.9916 16.5484 20.9982 12.8996"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M20.4803 3.51751L14.931 9.0515M20.4803 3.51751C19.9863 3.023 16.6587 3.0691 15.9552 3.0791M20.4803 3.51751C20.9742 4.01202 20.9282 7.34329 20.9182 8.04754"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <button className="w-32 h-8 mt-2 text-sm rounded bg-[#838793] ml-2 opacity-80 text-white text-center flex items-center justify-center">
+              <div className="mb-1">📨</div>
+              <div>Message</div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                color="currentColor"
+                fill="none"
+                className="w-4 h-4 ml-1"
+              >
+                <path
+                  d="M11.1004 3.00208C7.4515 3.00864 5.54073 3.09822 4.31962 4.31931C3.00183 5.63706 3.00183 7.75796 3.00183 11.9997C3.00183 16.2415 3.00183 18.3624 4.31962 19.6801C5.6374 20.9979 7.75836 20.9979 12.0003 20.9979C16.2421 20.9979 18.3631 20.9979 19.6809 19.6801C20.902 18.4591 20.9916 16.5484 20.9982 12.8996"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M20.4803 3.51751L14.931 9.0515M20.4803 3.51751C19.9863 3.023 16.6587 3.0691 15.9552 3.0791M20.4803 3.51751C20.9742 4.01202 20.9282 7.34329 20.9182 8.04754"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <button className="w-24 h-8 mt-2 text-sm rounded bg-[#838793] ml-2 opacity-80 text-white text-center flex items-center justify-center">
+              💸Buy
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                color="currentColor"
+                fill="none"
+                className="w-4 h-4 ml-1"
+              >
+                <path
+                  d="M11.1004 3.00208C7.4515 3.00864 5.54073 3.09822 4.31962 4.31931C3.00183 5.63706 3.00183 7.75796 3.00183 11.9997C3.00183 16.2415 3.00183 18.3624 4.31962 19.6801C5.6374 20.9979 7.75836 20.9979 12.0003 20.9979C16.2421 20.9979 18.3631 20.9979 19.6809 19.6801C20.902 18.4591 20.9916 16.5484 20.9982 12.8996"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M20.4803 3.51751L14.931 9.0515M20.4803 3.51751C19.9863 3.023 16.6587 3.0691 15.9552 3.0791M20.4803 3.51751C20.9742 4.01202 20.9282 7.34329 20.9182 8.04754"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <button
+              onClick={handleAutobuyClick}
+              className="w-24 h-8 mt-2 text-sm rounded bg-[#41d277] ml-2 opacity-80 text-white text-center flex items-center justify-center"
+            >
+              🛒Autobuy
+            </button>
+          </div>
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+        <div>
+          {showBotThinking && <BotThinking />}
+          {!showBotThinking && currentStatusIndex > 0 && currentStatusIndex <= statusSteps.length && (
+            <FetchingStatus
+              emoji={statusSteps[currentStatusIndex - 1].emoji}
+              status={statusSteps[currentStatusIndex - 1].status}
+            />
+          )}
+        </div>
       </div>
     </main>
   );
