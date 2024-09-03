@@ -33,13 +33,13 @@ export default function Home() {
       }, 1500); // 1500 ms voor elke status
       return () => clearTimeout(timer);
     }
-  }, [currentStatusIndex]);
+  }, [currentStatusIndex, statusSteps.length]);
 
   return (
     <main className="flex flex-row items-start justify-center">
-      <div className="w-[650px] h-screen border-4 bg-[#555961] mx-auto flex justify-center flex-col">
+      <div className="w-[400px] h-screen border-4 bg-[#555961] mx-auto flex justify-center flex-col">
         <div className="mx-auto">
-          <div className="w-[500px] h-[580px] bg-[#4b4f56] rounded-md border-l-4 border-[#3ae6b6] mt-3">
+          <div className="w-[350px] h-[580px] bg-[#4b4f56] rounded-md border-l-4 border-[#3ae6b6] mt-3">
             <div className="flex flex-row p-5">
               <h1 className="text-url-blue">T-shirt Ralph Lauren</h1>
             </div>
@@ -50,7 +50,7 @@ export default function Home() {
                     <TextWithBackground
                       bgColor="#37393e"
                       text="📍"
-                      width="25px"
+                      width="17px"
                     />
                     <h2 className="font-bold text-white">Location </h2>
                   </div>
@@ -58,24 +58,24 @@ export default function Home() {
                     <TextWithBackground
                       bgColor="#37393e"
                       text="Italien (IT)"
-                      width="80px"
+                      width="60px"
                     />
                   </div>
                 </div>
                 <div>
-                  <div className="flex ml-12">
+                  <div className="flex ml-[7.5px]">
                     <TextWithBackground
                       bgColor="#37393e"
                       text="👕"
-                      width="25px"
+                      width="17px"
                     />
                     <h2 className="font-bold text-white">Brand </h2>
                   </div>
-                  <div className="mt-2 ml-12 text-white">
+                  <div className="mt-2 ml-[7.5px] text-white">
                     <TextWithBackground
                       bgColor="#37393e"
                       text="Ralph Lauren"
-                      width="98px"
+                      width="70px"
                     />
                   </div>
                 </div>
@@ -84,7 +84,7 @@ export default function Home() {
                     <TextWithBackground
                       bgColor="#37393e"
                       text="📏"
-                      width="25px"
+                      width="17px"
                     />
                     <h2 className="font-bold text-white">Size </h2>
                   </div>
@@ -92,7 +92,7 @@ export default function Home() {
                     <TextWithBackground
                       bgColor="#37393e"
                       text="s"
-                      width="20px"
+                      width="16px"
                     />
                   </div>
                 </div>
@@ -103,7 +103,7 @@ export default function Home() {
                     <TextWithBackground
                       bgColor="#37393e"
                       text="🕐"
-                      width="25px"
+                      width="17px"
                     />
                     <h2 className="font-bold text-white">Posted </h2>
                   </div>
@@ -111,7 +111,7 @@ export default function Home() {
                     <TextWithBackground
                       bgColor="#37393e"
                       text="9 seconden geleden"
-                      width="148px"
+                      width="100px"
                     />
                   </div>
                 </div>
@@ -119,8 +119,8 @@ export default function Home() {
                   <div className="flex mt-5 ml-[-8px]">
                     <TextWithBackground
                       bgColor="#37393e"
-                      text="🕐"
-                      width="25px"
+                      text="⭐"
+                      width="17px"
                     />
                     <h2 className="font-bold text-white">Rating </h2>
                   </div>
@@ -128,7 +128,7 @@ export default function Home() {
                     <TextWithBackground
                       bgColor="#37393e"
                       text="⭐⭐⭐⭐⭐"
-                      width="95px"
+                      width="70px"
                     />
                   </div>
                 </div>
@@ -145,7 +145,7 @@ export default function Home() {
                     <TextWithBackground
                       bgColor="#37393e"
                       text="Very good condition"
-                      width="150px"
+                      width="100px"
                     />
                   </div>
                 </div>
@@ -164,7 +164,7 @@ export default function Home() {
                     <TextWithBackground
                       bgColor="#37393e"
                       text="10|11.2 EUR"
-                      width="90px"
+                      width="60px"
                     />
                   </div>
                 </div>
@@ -179,7 +179,7 @@ export default function Home() {
                     height={300}
                   />
                   <div className="flex flex-col">
-                    <div className="overflow-hidden mb-2">
+                    <div className="overflow-hidden mb-2 mr-2">
                       <Image
                         alt="picture 1"
                         src="/picture2.jpg"
@@ -188,7 +188,7 @@ export default function Home() {
                         width={200}
                       />
                     </div>
-                    <div className="overflow-hidden">
+                    <div className="overflow-hidden mr-2">
                       <Image
                         alt="picture 1"
                         src="/picture3.jpg"
@@ -203,7 +203,7 @@ export default function Home() {
             </div>
           </div>
           <div className="flex items-center">
-            <button className="w-24 h-8 mt-2 text-sm rounded bg-[#838793] opacity-80 text-white text-center flex items-center justify-center">
+            <button className="w-20 h-7 mt-2 text-xs rounded bg-[#838793] opacity-80 text-white text-center flex items-center justify-center">
               🔎Link
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -230,7 +230,7 @@ export default function Home() {
                 />
               </svg>
             </button>
-            <button className="w-32 h-8 mt-2 text-sm rounded bg-[#838793] ml-2 opacity-80 text-white text-center flex items-center justify-center">
+            <button className="w-28 h-7 mt-2 text-xs rounded bg-[#838793] ml-2 opacity-80 text-white text-center flex items-center justify-center">
               <div className="mb-1">📨</div>
               <div>Message</div>
               <svg
@@ -258,7 +258,7 @@ export default function Home() {
                 />
               </svg>
             </button>
-            <button className="w-24 h-8 mt-2 text-sm rounded bg-[#838793] ml-2 opacity-80 text-white text-center flex items-center justify-center">
+            <button className="w-20 h-7 mt-2 text-xs rounded bg-[#838793] ml-2 opacity-80 text-white text-center flex items-center justify-center">
               💸Buy
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -287,7 +287,7 @@ export default function Home() {
             </button>
             <button
               onClick={handleAutobuyClick}
-              className="w-24 h-8 mt-2 text-sm rounded bg-[#41d277] ml-2 opacity-80 text-white text-center flex items-center justify-center"
+              className="w-20 h-7 mt-2 text-xs rounded bg-[#41d277] ml-2 opacity-80 text-white text-center flex items-center justify-center"
             >
               🛒Autobuy
             </button>
