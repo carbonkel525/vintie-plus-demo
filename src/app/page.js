@@ -5,6 +5,7 @@ import TextWithBackground from "@/components/TextWithBackground";
 import Image from "next/image";
 import BotThinking from "@/components/BotThinking";
 import FetchingStatus from "@/components/FetchingStatus";
+import SuccessStatus from "@/components/SuccessStatus";
 
 export default function Home() {
   const [showBotThinking, setShowBotThinking] = useState(false);
@@ -22,14 +23,14 @@ export default function Home() {
     setTimeout(() => {
       setShowBotThinking(false);
       setCurrentStatusIndex(1); // Start bij de eerste status na BotThinking
-    }, 1500); // 3 seconden voor BotThinking
+    }, 1500); // 1.5 seconden voor BotThinking
   };
 
   useEffect(() => {
-    if (currentStatusIndex > 0 && currentStatusIndex < statusSteps.length) {
+    if (currentStatusIndex > 0 && currentStatusIndex <= statusSteps.length) {
       const timer = setTimeout(() => {
         setCurrentStatusIndex((prevIndex) => prevIndex + 1);
-      }, 1000); // 1500 ms voor elke status
+      }, 1500); // 1500 ms voor elke status
       return () => clearTimeout(timer);
     }
   }, [currentStatusIndex]);
@@ -292,15 +293,14 @@ export default function Home() {
             </button>
           </div>
         </div>
-        <div>
-          {showBotThinking && <BotThinking />}
-          {!showBotThinking && currentStatusIndex > 0 && currentStatusIndex <= statusSteps.length && (
-            <FetchingStatus
-              emoji={statusSteps[currentStatusIndex - 1].emoji}
-              status={statusSteps[currentStatusIndex - 1].status}
-            />
-          )}
-        </div>
+        {showBotThinking && <BotThinking />}
+        {currentStatusIndex > 0 && currentStatusIndex <= statusSteps.length && (
+          <FetchingStatus
+            emoji={statusSteps[currentStatusIndex - 1].emoji}
+            status={statusSteps[currentStatusIndex - 1].status}
+          />
+        )}
+        {currentStatusIndex === statusSteps.length + 1 && <SuccessStatus />}
       </div>
     </main>
   );

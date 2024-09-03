@@ -23,7 +23,7 @@ function FetchingStatus({emoji, status}) {
             vandaag om 18:10
           </h1>
         </div>
-        <div className="w-[300px] h-[90px] bg-[#4b4f56] rounded-md border-l-4 border-[#3ae6b6] mt-3">
+        <div className="w-[300px] h-[80px] bg-[#4b4f56] rounded-md border-l-4 border-[#3ae6b6] mt-3">
           <h1 className="p-3 text-xs font-semibold text-white">
             Autobuy status
           </h1>
