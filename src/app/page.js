@@ -263,12 +263,16 @@ export default function Home() {
                 />
               </button>
             </div>
-            <button
-              onClick={handleAutobuyClick}
-              className="w-24 h-8 mt-2 text-sm rounded bg-[#41d277] opacity-80 text-white text-center flex items-center justify-center laptop:ml-2 desktop:ml-2"
-            >
-              🛒Autobuy
-            </button>
+            <div className="flex justify-center items-center ml-[-32px]">
+              <div className="border-2 border-red-500 rounded-full p-2">
+                <button
+                  onClick={handleAutobuyClick}
+                  className="w-24 h-8 text-sm rounded bg-[#41d277] opacity-80 text-white text-center flex items-center justify-center"
+                >
+                  🛒Autobuy
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
