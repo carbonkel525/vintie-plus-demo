@@ -22,7 +22,7 @@ function SuccessStatus() {
               vandaag om 18:10
             </h1>
           </div>
-          <div className="w-[280px] h-[110px] laptop:h-[120px] bg-[#4b4f56] rounded-md border-l-4 border-[#3ae6b6] ml-12">
+          <div className="w-[265px] h-[110px] laptop:h-[120px] bg-[#4b4f56] rounded-md border-l-4 border-[#3ae6b6] ml-12">
             <h1 className="pt-3 ml-3 text-xs font-semibold text-white">
               The item was successfully bought
             </h1>

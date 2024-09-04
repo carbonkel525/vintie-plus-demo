@@ -37,9 +37,9 @@ export default function Home() {
 
   return (
     <main className="flex flex-row items-center mobile-m:justify-center mobile-m:w-screen">
-      <div className="w-[650px] mobile-m:w-[375px] border-4 bg-[#555961] mx-auto flex justify-center flex-col mobile-m:h-screen">
+      <div className="w-[650px] mobile-m:w-[355px] border-4 bg-[#555961] mx-auto flex justify-center flex-col mobile-m:h-screen">
         <div className="mx-auto">
-          <div className="w-[500px] mobile-m:w-[285px] h-[580px] mobile-m:h-[480px] bg-[#4b4f56] rounded-md border-l-4 border-[#3ae6b6] mt-3 text-xs">
+          <div className="w-[500px] mobile-m:w-[290px] h-[580px] mobile-m:h-[480px] bg-[#4b4f56] rounded-md border-l-4 border-[#3ae6b6] mt-3 text-xs">
             <div className="flex flex-row p-5">
               <h1 className="text-url-blue text-sm">T-shirt Ralph Lauren</h1>
             </div>

@@ -22,7 +22,7 @@ function BotThinking() {
             vandaag om 18:10
           </h1>
         </div>
-        <h2 className="text-white flex">
+        <h2 className="text-white flex text-xs">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
