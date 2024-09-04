@@ -6,7 +6,7 @@ import Image from "next/image";
 
 function FetchingStatus({ emoji, status }) {
   return (
-    <div className="p-2 flex flex-row bg-[#686990] bg-opacity-55 border-l-4 border-[#282bc8] mt-3">
+    <div className="p-4 flex flex-row bg-[#686990] bg-opacity-55 border-l-4 border-[#282bc8] mt-3">
       <div>
         <div className="flex clear-start">
           <Image
