@@ -5,7 +5,7 @@ import React from "react";
 function TextWithBackground({ bgColor, text, width }) {
   return (
     <div
-      className="ml-5 text-[8px] rounded p-1 tracking-widest"
+      className="ml-5 text-xs rounded p-1 tracking-widest mobile-m:text-[10px]"
       style={{ backgroundColor: bgColor, width: width }}
     >
       <div className="text-center">{text}</div>
