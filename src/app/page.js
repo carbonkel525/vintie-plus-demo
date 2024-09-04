@@ -36,12 +36,12 @@ export default function Home() {
   }, [currentStatusIndex, statusSteps.length]);
 
   return (
-    <main className="flex flex-row items-start mobile-m:justify-center mobile-m:w-screen">
-      <div className="w-[650px] mobile-m:w-[375px] border-4 bg-[#555961] mx-auto flex justify-center flex-col">
+    <main className="flex flex-row items-center mobile-m:justify-center mobile-m:w-screen">
+      <div className="w-[650px] mobile-m:w-[375px] border-4 bg-[#555961] mx-auto flex justify-center flex-col mobile-m:h-screen">
         <div className="mx-auto">
-          <div className="w-[500px] mobile-m:w-[320px] h-[580px] bg-[#4b4f56] rounded-md border-l-4 border-[#3ae6b6] mt-3 ">
+          <div className="w-[500px] mobile-m:w-[285px] h-[580px] mobile-m:h-[480px] bg-[#4b4f56] rounded-md border-l-4 border-[#3ae6b6] mt-3 text-xs">
             <div className="flex flex-row p-5">
-              <h1 className="text-url-blue">T-shirt Ralph Lauren</h1>
+              <h1 className="text-url-blue text-sm">T-shirt Ralph Lauren</h1>
             </div>
             <div className="grid grid-cols-3 gap-4 mobile-m:grid-cols-2 mobile-m:gap-2 ">
               {/* First row on mobile: Location and Brand */}
@@ -205,9 +205,25 @@ export default function Home() {
                   alt="picture mobile"
                   src="/picture1.jpeg"
                   className="rounded-md mr-2 hidden mobile-m:block"
-                  width={170}
-                  height={300}
+                  width={110}
+                  height={200}
                 />
+                <div>
+                  <Image
+                    alt="picture 3"
+                    src="/picture2.jpg"
+                    className="rounded-md hidden mobile-m:block mobile-m:h-[70px]"
+                    height={200}
+                    width={110}
+                  />
+                  <Image
+                    alt="picture 3"
+                    src="/picture3.jpg"
+                    className="rounded-md hidden mobile-m:block mobile-m:h-[70px] mt-2"
+                    height={200}
+                    width={110}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -235,16 +251,18 @@ export default function Home() {
                 className="ml-1"
               />
             </button>
-            <button className="w-24 h-8 mt-2 text-sm rounded bg-[#838793] opacity-80 text-white text-center flex items-center justify-center laptop:ml-2 desktop:ml-2">
-              💸Buy
-              <Image
-                src="/svg/buy-icon.svg"
-                alt="buy icon"
-                width={16}
-                height={16}
-                className="ml-1"
-              />
-            </button>
+            <div className="p-[-2]">
+              <button className="w-24 h-8 mt-2 text-sm rounded bg-[#838793] opacity-80 text-white text-center flex items-center justify-center ">
+                💸Buy
+                <Image
+                  src="/svg/buy-icon.svg"
+                  alt="buy icon"
+                  width={16}
+                  height={16}
+                  className="ml-1"
+                />
+              </button>
+            </div>
             <button
               onClick={handleAutobuyClick}
               className="w-24 h-8 mt-2 text-sm rounded bg-[#41d277] opacity-80 text-white text-center flex items-center justify-center laptop:ml-2 desktop:ml-2"
